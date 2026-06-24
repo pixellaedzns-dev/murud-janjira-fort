@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala → Murud-Janjira Fort | Low Budget Travel Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea:#0d3b3e;
+    --sea-deep:#082528;
+    --stone:#c9b896;
+    --sand:#f3ead9;
+    --rust:#a8462f;
+    --ink:#1a1f1c;
+    --line: rgba(13,59,62,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Layout shell ---------- */
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 18px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, var(--sea-deep) 0%, var(--sea) 55%, #14524f 100%);
+    color:var(--sand);
+    overflow:hidden;
+    padding:64px 0 90px;
+  }
+  .hero::before{
+    /* horizon texture: faint repeating wave lines */
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 34px);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--stone);
+    margin-bottom:28px;
+  }
+  .hero-eyebrow .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--stone);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.2rem);
+    line-height:0.98;
+    color:var(--sand);
+  }
+  .hero h1 .from{
+    display:block;
+    font-size:0.4em;
+    font-weight:400;
+    font-style:italic;
+    color:var(--stone);
+    letter-spacing:0.02em;
+    margin-bottom:6px;
+  }
+  .hero h1 .to{
+    display:block;
+    color:#e8c9a0;
+  }
+  .hero-sub{
+    max-width:480px;
+    margin-top:22px;
+    font-size:17px;
+    line-height:1.55;
+    color:rgba(243,234,217,0.82);
+  }
+  .hero-meta{
+    display:flex;
+    gap:32px;
+    margin-top:40px;
+    flex-wrap:wrap;
+  }
+  .hero-meta div{
+    border-left:2px solid var(--rust);
+    padding-left:12px;
+  }
+  .hero-meta .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:22px;
+    color:var(--sand);
+    display:block;
+  }
+  .hero-meta .lbl{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--stone);
+  }
+
+  /* Fort emerging graphic */
+  .fort-mark{
+    position:absolute;
+    right:-40px;
+    bottom:-30px;
+    width:340px;
+    opacity:0.9;
+    filter:drop-shadow(0 10px 30px rgba(0,0,0,0.35));
+  }
+  @media (max-width:780px){
+    .fort-mark{display:none;}
+  }
+
+  /* ---------- TIDE LINE / ROUTE ---------- */
+  .route-rail{
+    background:var(--sea-deep);
+    padding:26px 0 30px;
+    overflow-x:auto;
+  }
+  .route-track{
+    display:flex;
+    align-items:center;
+    gap:0;
+    min-width:max-content;
+    padding:0 28px;
+  }
+  .route-node{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:var(--sand);
+    min-width:108px;
+  }
+  .route-node .ico{font-size:22px;line-height:1;margin-bottom:8px;}
+  .route-node .lbl{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--stone);
+    text-align:center;
+  }
+  .route-arrow{
+    color:var(--rust);
+    font-size:18px;
+    margin:0 8px;
+    transform:translateY(-10px);
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{
+    padding:70px 0;
+    position:relative;
+  }
+  section.alt{
+    background:#ece1cd;
+  }
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    margin-bottom:36px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:16px;
+  }
+  .sec-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--rust);
+    white-space:nowrap;
+  }
+  .sec-head h2{
+    font-size:clamp(1.6rem, 3.2vw, 2.4rem);
+  }
+
+  /* ---------- OVERVIEW ---------- */
+  .overview-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:860px){
+    .overview-grid{grid-template-columns:1fr;}
+  }
+  .fact-list{
+    list-style:none;
+    margin:0;padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .fact-list li{
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:14px;
+    font-size:15px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .fact-list .k{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--rust);
+    align-self:start;
+  }
+  .tagline{
+    margin-top:26px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--sea);
+  }
+  .fort-photo{
+    position:relative;
+    border-radius:6px;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    border:8px solid var(--sea);
+  }
+  .fort-photo img{width:100%;height:100%;object-fit:cover;}
+  .fort-photo .cap{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    background:linear-gradient(0deg, rgba(8,37,40,0.85), transparent);
+    color:var(--sand);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:30px 16px 12px;
+  }
+
+  /* ---------- DAY TIMELINE ---------- */
+  .day-rail{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .day{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:22px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .day:last-child{border-bottom:none;}
+  .day-tag{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-style:italic;
+    color:var(--rust);
+    font-size:15px;
+    align-self:start;
+  }
+  .day-tag small{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-style:normal;
+    font-size:10px;
+    color:var(--sea);
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+  .day ul{
+    margin:0;padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .day li{
+    font-size:15px;
+    padding-left:18px;
+    position:relative;
+  }
+  .day li::before{
+    content:"";
+    position:absolute;
+    left:0;top:9px;
+    width:6px;height:6px;
+    background:var(--sea);
+    border-radius:50%;
+  }
+
+  /* ---------- TABLES ---------- */
+  .table-scroll{overflow-x:auto;}
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    min-width:560px;
+  }
+  thead th{
+    background:var(--sea);
+    color:var(--sand);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    text-align:left;
+    padding:11px 12px;
+  }
+  tbody td{
+    padding:11px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  tbody tr:nth-child(even){background:rgba(13,59,62,0.045);}
+  td.fare, th.fare{font-family:'JetBrains Mono', monospace; color:var(--rust); font-weight:600;}
+  .table-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--sea);
+    margin:0 0 12px;
+    padding-top:4px;
+  }
+  .note-star{
+    margin-top:14px;
+    font-size:13px;
+    color:var(--rust);
+    font-style:italic;
+  }
+
+  /* two-col table layout */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+  }
+  @media (max-width:860px){
+    .two-col{grid-template-columns:1fr;}
+  }
+
+  /* ---------- TRANSFER + TIPS CARDS ---------- */
+  .card-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  @media (max-width:860px){
+    .card-grid{grid-template-columns:1fr;}
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:26px;
+  }
+  .card h3{
+    font-size:16px;
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--sea);
+    margin-bottom:18px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--line);
+  }
+  .transfer-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 0;
+    font-size:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .transfer-row:last-child{border-bottom:none;}
+  .transfer-row .amt{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--rust);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .tip-box{
+    background:#2d2017;
+    color:var(--sand);
+    border-radius:4px;
+    padding:22px 26px;
+    margin-top:20px;
+  }
+  .tip-box h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--stone);
+    margin:0 0 12px;
+  }
+  .tip-box ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7;}
+
+  /* ---------- BUDGET BREAKDOWN ---------- */
+  .budget-table{width:100%;border-collapse:collapse;font-size:15px;}
+  .budget-table td{padding:13px 4px;border-bottom:1px solid var(--line);}
+  .budget-table td:last-child{
+    text-align:right;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+  }
+  .budget-table tr.total td{
+    border-bottom:none;
+    border-top:2px solid var(--ink);
+    font-size:18px;
+    padding-top:18px;
+    color:var(--rust);
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+  }
+
+  /* ---------- PLACES ---------- */
+  .place-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  @media (max-width:780px){
+    .place-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .place-grid{grid-template-columns:1fr;}
+  }
+  .place{
+    position:relative;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    border-radius:4px;
+  }
+  .place img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .place:hover img{transform:scale(1.06);}
+  .place .tag{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    background:linear-gradient(0deg, rgba(8,37,40,0.88), transparent 70%);
+    color:var(--sand);
+    font-size:13px;
+    font-weight:500;
+    padding:30px 12px 10px;
+  }
+  .place.list-only{
+    background:#fff;
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px;
+    aspect-ratio:auto;
+  }
+  .place.list-only .tag{
+    position:static;background:none;color:var(--ink);padding:0;font-size:14px;text-align:center;
+  }
+
+  /* ---------- STAY OPTIONS ---------- */
+  .stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:780px){.stay-grid{grid-template-columns:1fr;}}
+  .stay-card{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:22px;
+    border-radius:4px;
+  }
+  .stay-card .type{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--rust);
+  }
+  .stay-card .ex{
+    font-size:15px;
+    margin:10px 0 14px;
+  }
+  .stay-card .price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:19px;
+    color:var(--sea);
+    font-weight:700;
+  }
+  .stay-card .price span{
+    font-size:11px;
+    color:var(--ink);
+    font-weight:400;
+    font-family:'Work Sans', sans-serif;
+  }
+
+  /* ---------- TIPS LIST ---------- */
+  .tips-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .tips-list li{
+    display:flex;gap:14px;align-items:flex-start;
+    font-size:15px;
+  }
+  .tips-list .n{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--rust);
+    font-size:13px;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  /* ---------- FOOTER BAND ---------- */
+  .summary-band{
+    background:var(--sea-deep);
+    color:var(--sand);
+    padding:50px 0;
+  }
+  .summary-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1.4fr;
+    gap:36px;
+    align-items:start;
+  }
+  @media (max-width:780px){
+    .summary-grid{grid-template-columns:1fr;gap:30px;}
+  }
+  .summary-grid h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--stone);
+    margin-bottom:10px;
+  }
+  .summary-grid .big{
+    font-family:'Fraunces', serif;
+    font-size:30px;
+    color:#e8c9a0;
+  }
+  .summary-grid .small-line{font-size:14px;color:rgba(243,234,217,0.7);margin-top:6px;}
+  .historical{
+    font-size:14.5px;
+    line-height:1.6;
+    color:rgba(243,234,217,0.85);
+    font-style:italic;
+    border-left:2px solid var(--rust);
+    padding-left:16px;
+  }
+
+  .final-band{
+    background:var(--rust);
+    color:var(--sand);
+    text-align:center;
+    padding:24px 0;
+  }
+  .final-band .l1{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:0.02em;
+  }
+  .final-band .l2{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-top:6px;
+    color:rgba(243,234,217,0.85);
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-eyebrow"><span class="dot"></span> Low Budget Travel Plan &nbsp;·&nbsp; Best time: October–March</div>
+      <h1>
+        <span class="from">Kerala to</span>
+        <span class="to">Murud‑Janjira</span>
+        Fort
+      </h1>
+      <p class="hero-sub">A sea fort off the coast of Raigad, Maharashtra — never captured by any enemy, reachable only by sharing-boat. Three days, two nights, one solo budget route by rail, road and water.</p>
+      <div class="hero-meta">
+        <div><span class="num">~1,250–1,400 km</span><span class="lbl">Total distance</span></div>
+        <div><span class="num">28–34 hrs</span><span class="lbl">Travel time, incl. transit</span></div>
+        <div><span class="num">₹2,300–2,800</span><span class="lbl">Total budget / person</span></div>
+      </div>
+    </div>
+    <svg class="fort-mark" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 130 Q100 138 190 130" stroke="#f3ead9" stroke-width="2" opacity="0.4"/>
+      <path d="M30 130 L30 95 L40 95 L40 85 L55 85 L55 95 L75 95 L75 78 L88 78 L88 95 L112 95 L112 78 L125 78 L125 95 L145 95 L145 85 L160 85 L160 95 L170 95 L170 130 Z" fill="#c9b896" opacity="0.9"/>
+      <rect x="45" y="100" width="8" height="14" fill="#082528" opacity="0.5"/>
+      <rect x="95" y="100" width="8" height="14" fill="#082528" opacity="0.5"/>
+      <rect x="135" y="100" width="8" height="14" fill="#082528" opacity="0.5"/>
+    </svg>
+  </header>
+
+  <!-- ===================== ROUTE RAIL ===================== -->
+  <div class="route-rail">
+    <div class="route-track">
+      <div class="route-node"><span class="ico">🌴</span><span class="lbl">Kerala</span></div>
+      <span class="route-arrow">→</span>
+      <div class="route-node"><span class="ico">🚆</span><span class="lbl">Train</span></div>
+      <span class="route-arrow">→</span>
+      <div class="route-node"><span class="ico">🏙️</span><span class="lbl">Mumbai / Panvel</span></div>
+      <span class="route-arrow">→</span>
+      <div class="route-node"><span class="ico">🚌</span><span class="lbl">Bus</span></div>
+      <span class="route-arrow">→</span>
+      <div class="route-node"><span class="ico">🛖</span><span class="lbl">Murud</span></div>
+      <span class="route-arrow">→</span>
+      <div class="route-node"><span class="ico">⛵</span><span class="lbl">Boat</span></div>
+      <span class="route-arrow">→</span>
+      <div class="route-node"><span class="ico">🏰</span><span class="lbl">Janjira Fort</span></div>
+    </div>
+  </div>
+
+  <!-- ===================== 1. OVERVIEW ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">01</span><h2>Journey Overview</h2></div>
+      <div class="overview-grid">
+        <div>
+          <ul class="fact-list">
+            <li><span class="k">Distance</span><span>~1,250 to 1,400 km, depending on starting point in Kerala</span></li>
+            <li><span class="k">Travel time</span><span>28–34 hours, including transit</span></li>
+            <li><span class="k">Best time</span><span>October to March</span></li>
+            <li><span class="k">Trip type</span><span>Budget / backpacking</span></li>
+            <li><span class="k">Ideal duration</span><span>3 days, 2 nights</span></li>
+            <li><span class="k">Budget plan</span><span>Designed for the solo traveler</span></li>
+          </ul>
+          <p class="tagline">Travel cheap, travel smart.</p>
+        </div>
+        <div class="fort-photo">
+          <img src="https://images.unsplash.com/photo-1602216765855-04b3a4ee426c?w=700&q=80" alt="Murud-Janjira Fort surrounded by sea">
+          <div class="cap">Murud-Janjira Fort · Raigad District, Maharashtra</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2. TRAVEL PLAN ===================== -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">02</span><h2>Travel Plan — 3 Days / 2 Nights</h2></div>
+      <div class="day-rail">
+        <div class="day">
+          <div class="day-tag">Day 1<small>Departure</small></div>
+          <ul>
+            <li>Start from Kerala (night)</li>
+            <li>Board train to Mumbai / Panvel</li>
+            <li>Overnight journey</li>
+          </ul>
+        </div>
+        <div class="day">
+          <div class="day-tag">Day 2<small>Arrival to Murud</small></div>
+          <ul>
+            <li>Reach Mumbai / Panvel (morning)</li>
+            <li>Take MSRTC bus to Murud via Mangaon</li>
+            <li>Reach Murud (afternoon)</li>
+            <li>Visit Murud Beach &amp; local area</li>
+            <li>Stay in a budget room or dormitory</li>
+          </ul>
+        </div>
+        <div class="day">
+          <div class="day-tag">Day 3<small>The fort &amp; return</small></div>
+          <ul>
+            <li>Visit Janjira Fort by boat (morning)</li>
+            <li>Explore Murud market</li>
+            <li>Return to Panvel by bus</li>
+            <li>Board train to Kerala (night)</li>
+          </ul>
+        </div>
+        <div class="day">
+          <div class="day-tag">Day 4<small>Early morning</small></div>
+          <ul>
+            <li>Reach Kerala</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. TRAIN DETAILS ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">03</span><h2>Train Details — From Kerala</h2></div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>From (Kerala)</th><th>To</th><th>Train name</th><th>Train no.</th><th>Departure</th><th>Arrival</th><th>Duration</th><th class="fare">Fare (SL)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ernakulam (ERS)</td><td>LTT Mumbai</td><td>Netravati Express</td><td class="mono">16345</td><td>06:20 PM</td><td>05:10 AM</td><td>10h 50m</td><td class="fare">₹415</td></tr>
+            <tr><td>Kozhikode (CLT)</td><td>LTT Mumbai</td><td>West Coast Express</td><td class="mono">12625</td><td>07:45 PM</td><td>06:45 AM</td><td>11h 00m</td><td class="fare">₹445</td></tr>
+            <tr><td>Trivandrum (TVC)</td><td>LTT Mumbai</td><td>Netravati Express</td><td class="mono">16343</td><td>04:15 PM</td><td>03:50 AM</td><td>11h 35m</td><td class="fare">₹415</td></tr>
+            <tr><td>Alappuzha (ALLP)</td><td>LTT Mumbai</td><td>Netravati Express</td><td class="mono">16343</td><td>04:50 PM</td><td>03:50 AM</td><td>11h 00m</td><td class="fare">₹415</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note-star">★ SL (Sleeper) is the best low-budget option. Book in advance for confirmed tickets.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 4. BUS DETAILS ===================== -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">04</span><h2>Bus Details — Panvel / Mumbai to Murud</h2></div>
+      <div class="two-col">
+        <div>
+          <p class="table-title">From Panvel to Murud (via Mangaon)</p>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Bus type</th><th>Departure</th><th>Arrival</th><th>Duration</th><th class="fare">Fare (approx.)</th></tr></thead>
+              <tbody>
+                <tr><td>MSRTC Ordinary</td><td>05:45 AM</td><td>08:45 AM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+                <tr><td>MSRTC Ordinary</td><td>07:30 AM</td><td>10:30 AM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+                <tr><td>MSRTC Ordinary</td><td>12:30 PM</td><td>03:30 PM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+                <tr><td>MSRTC Ordinary</td><td>03:00 PM</td><td>06:00 PM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <p class="table-title">From Murud to Panvel</p>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Bus type</th><th>Departure</th><th>Arrival</th><th>Duration</th><th class="fare">Fare (approx.)</th></tr></thead>
+              <tbody>
+                <tr><td>MSRTC Ordinary</td><td>06:30 AM</td><td>09:30 AM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+                <tr><td>MSRTC Ordinary</td><td>11:00 AM</td><td>02:00 PM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+                <tr><td>MSRTC Ordinary</td><td>03:00 PM</td><td>06:00 PM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+                <tr><td>MSRTC Ordinary</td><td>05:30 PM</td><td>08:30 PM</td><td>3h 00m</td><td class="fare">₹120</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class="note-star">★ Buses are frequent and very economical.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 5 & 6: TRANSFER + BUDGET ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="card-grid" style="grid-template-columns: 1fr 1fr; align-items:start;">
+
+        <div>
+          <div class="sec-head" style="border-bottom:none; margin-bottom:18px;"><span class="sec-num mono">05</span><h2 style="font-size:1.4rem;">Local Transfer in Murud</h2></div>
+          <div class="card">
+            <h3>Getting around</h3>
+            <div class="transfer-row"><span>⛵ Boat to Janjira Fort (sharing boat, both ways)</span><span class="amt">₹150–200</span></div>
+            <div class="transfer-row"><span>🛺 Auto / local transport, per ride</span><span class="amt">₹20–50</span></div>
+          </div>
+
+          <div class="tip-box">
+            <h4>Tips to save more</h4>
+            <ul>
+              <li>Travel in Sleeper Class</li>
+              <li>Use MSRTC ordinary buses</li>
+              <li>Stay in budget rooms or dormitories</li>
+              <li>Eat at local dhaba / mess</li>
+              <li>Carry your own water bottle</li>
+              <li>Travel light</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-head" style="border-bottom:none; margin-bottom:18px;"><span class="sec-num mono">06</span><h2 style="font-size:1.4rem;">Low Budget Expenses (Per Person)</h2></div>
+          <div class="card">
+            <table class="budget-table">
+              <tbody>
+                <tr><td>Train ticket (Kerala – Mumbai – Kerala)</td><td>₹830</td></tr>
+                <tr><td>Bus (Panvel – Murud – Panvel)</td><td>₹240</td></tr>
+                <tr><td>Local transport (auto, boat, etc.)</td><td>₹200</td></tr>
+                <tr><td>Food (3 days)</td><td>₹600</td></tr>
+                <tr><td>Stay (2 nights, budget room / dorm)</td><td>₹600</td></tr>
+                <tr><td>Miscellaneous</td><td>₹200</td></tr>
+                <tr class="total"><td>Total (approx.)</td><td>₹2,500</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. STAY OPTIONS ===================== -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">07</span><h2>Budget Stay Options in Murud</h2></div>
+      <div class="stay-grid">
+        <div class="stay-card">
+          <div class="type">Dormitory / Guest House</div>
+          <div class="ex">Shivaji Guest House, Murud</div>
+          <div class="price">₹250–400<span> / night</span></div>
+        </div>
+        <div class="stay-card">
+          <div class="type">Budget Room</div>
+          <div class="ex">Hotel Sagar, Murud</div>
+          <div class="price">₹500–800<span> / night</span></div>
+        </div>
+        <div class="stay-card">
+          <div class="type">Homestay</div>
+          <div class="ex">Local homestays</div>
+          <div class="price">₹500–800<span> / night</span></div>
+        </div>
+      </div>
+      <p class="note-star" style="margin-top:18px;">★ Book directly at the location for better rates.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 8. PLACES TO VISIT ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">08</span><h2>Places to Visit</h2></div>
+      <div class="place-grid">
+        <div class="place"><img src="https://images.unsplash.com/photo-1602216765855-04b3a4ee426c?w=500&q=80" alt="Janjira Fort"><div class="tag">Janjira Fort — main attraction</div></div>
+        <div class="place"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" alt="Murud Beach"><div class="tag">Murud Beach</div></div>
+        <div class="place"><img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=500&q=80" alt="Revdanda Beach"><div class="tag">Revdanda Beach — near Murud</div></div>
+        <div class="place list-only"><div class="tag">Korlai Fort — nearby</div></div>
+        <div class="place list-only"><div class="tag">Local Market — Alibag Road</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 9. TRAVEL TIPS ===================== -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num mono">09</span><h2>Travel Tips — Low Budget</h2></div>
+      <ul class="tips-list">
+        <li><span class="n">→</span> Book train tickets early for Sleeper class.</li>
+        <li><span class="n">→</span> Carry some home food and snacks.</li>
+        <li><span class="n">→</span> Use public transport — MSRTC buses.</li>
+        <li><span class="n">→</span> Bargain while taking an auto or boat.</li>
+        <li><span class="n">→</span> Keep cash on hand — ATMs are limited in Murud.</li>
+        <li><span class="n">→</span> Start early to save time and money.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== SUMMARY BAND ===================== -->
+  <div class="summary-band">
+    <div class="wrap">
+      <div class="summary-grid">
+        <div>
+          <h4>Total Duration</h4>
+          <div class="big">3 nights / 4 days</div>
+        </div>
+        <div>
+          <h4>Total Budget (Per Person)</h4>
+          <div class="big">₹2,300–2,800</div>
+          <div class="small-line">Approx., excluding shopping</div>
+        </div>
+        <div>
+          <h4>Historical Fact</h4>
+          <p class="historical">Janjira Fort is one of the strongest sea forts in India — never captured by any enemy till date.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-band">
+    <div class="l1">★ Travel low, experience more ★</div>
+    <div class="l2">Plan well · Travel safe · Enjoy the history</div>
+  </div>
+
+</body>
+</html>
